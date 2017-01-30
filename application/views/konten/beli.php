@@ -13,7 +13,7 @@
 								<p class="bg-warning text-warning">Data anda akan selalu rahasia</p>
 							</div>
 						</div>
-						<form class="form-horizontal" action="<?php echo base_url('user/proses_login'); ?>" method="POST">
+						<form class="form-horizontal" action="<?php echo base_url('user/update_beli'); ?>" method="POST">
 							<div class="form-group">
 								<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="">Nama Pembeli</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
@@ -59,7 +59,7 @@
 							    			<td>
 							    				<img class="col-md-3 col-sm-3 col-xs-6" src="<?php echo base_url(); ?>assets/images/produk/<?php echo $produk->foto_produk; ?>" alt="">
 							    				<div class="col-md-2">
-							    					<input type="number" name="qty" value="<?php echo $qty; ?>" placeholder="">
+							    					<input type="number" min="1" name="qty" value="<?php echo $qty; ?>" placeholder="">
 							    				</div>
 							    				<br><br><br>
 							    				<?php echo $produk->detail_produk; ?>
@@ -88,6 +88,14 @@
 							    					<option value="jne2">JNE EXPRESS</option>
 							    					<option value="gojek">GO SEND</option>
 							    				</select>
+							    			</td>
+							    		</tr>
+							    		<tr>
+							    			<td colspan="3">
+							    				<!-- <a href="<?php echo base_url("user/beli/$produk->id_produk"); ?>"> -->
+							    					<input type="hidden" name="id_produk" value="<?php echo $produk->id_produk; ?>">
+							    					<button type="submit" class="btn">Perbaharui</button>
+							    				<!-- </a> -->
 							    			</td>
 							    		</tr>
 							    	</table>

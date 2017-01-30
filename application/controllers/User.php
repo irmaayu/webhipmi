@@ -109,6 +109,17 @@ class User extends CI_Controller {
 		}else redirect(base_url(),'refresh');
 	}
 
+	/**
+	* kalo pas klik beli terus jumlahnya mau diganti masuknya ke fungsi ini
+	* cuma ngeganti url aja sih
+	*/
+	function update_beli()
+	{
+		if (isset($_POST['qty'])) {
+			redirect(base_url("user/beli") ."/" .$_POST['id_produk'] ."/" .$_POST['qty'],'refresh');
+		}
+	}
+
 	function pembayaran($id = NULL, $qty = NULL)
 	{
 		if ($id != NULL) {
@@ -212,7 +223,7 @@ class User extends CI_Controller {
 			$_POST['harga_produk'] = $pr->harga_produk;
 			$_POST['nama_produk'] = $pr->nama_produk;
 			$_POST['foto_produk'] = $pr->foto_produk;
-			$_POST['submit'] = 'cart';
+			// $_POST['submit'] = 'cart';
 		}
 
 		if ($this->input->post('submit') == 'cart') {
@@ -230,7 +241,7 @@ class User extends CI_Controller {
 			$r = base_url('user/cart');
 			redirect($r,'refresh');
 		}else if ($this->input->post('submit') == 'buy') {
-			$r = base_url('user/beli/') .$this->input->post('id_produk') ."/" .$this->input->post('qty');
+			$r = base_url('user/beli/') ."/" .$this->input->post('id_produk') ."/" .$_POST['qty'];
 			redirect($r,'refresh');
 		}
 	}
